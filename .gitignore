@@ -1,0 +1,23 @@
+# Logs
+*.log
+logs/
+
+# Temporary files
+*.tmp
+*.temp
+*~
+
+# IntelliJ IDEA
+.idea/
+*.iml
+
+# Build artifacts
+build/
+out/
+dist/
+target/
+
+# Environment variables
+.env
+.env.*
+!.env.example
