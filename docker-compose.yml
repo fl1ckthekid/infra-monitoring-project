@@ -1,0 +1,25 @@
+services:
+  api:
+    image: hashicorp/http-echo
+    container_name: monitoring-api
+    command:
+      - "-listen=:8080"
+      - "-text=Monitoring Service Active"
+    networks:
+      - monitoring-network
+
+  proxy:
+    image: nginx:alpine
+    container_name: monitoring-proxy
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+    depends_on:
+      - api
+    networks:
+      - monitoring-network
+
+networks:
+  monitoring-network:
+    driver: bridge
